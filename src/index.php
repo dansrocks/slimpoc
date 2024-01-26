@@ -1,6 +1,6 @@
 <?php
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
+
+use Dansrocks\Slimpoc\Action\WelcomeAction;
 use Slim\Factory\AppFactory;
 use DI\ContainerBuilder;
 use Psr\Log\LogLevel;
@@ -26,14 +26,7 @@ $containerBuilder->addDefinitions([
 AppFactory::setContainer($containerBuilder->build());
 $app = AppFactory::create();
 
-$app->get('/', function (Request $request, Response $response, $args) {
-    $response->getBody()->write("Hello world!");
-    return $response;
-})->setName('bienvenido');
-
-$app->get('/{name}', function (Request $request, Response $response, $args) {
-    $response->getBody()->write("Hello ${args['name']}!");
-    return $response;
-})->setName('bienvenido-fulanito');
+$app->get('/', WelcomeAction::class)->setName('bienvenido');
+$app->get('/{name}', WelcomeAction::class)->setName('bienvenido-fulanito');
 
 $app->run();
