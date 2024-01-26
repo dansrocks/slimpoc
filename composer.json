@@ -1,0 +1,21 @@
+{
+    "name": "dansrocks/slimpoc",
+    "description": "Tutorial para utilizar Slim 4",
+    "type": "project",
+    "license": "Apache 2.0",
+    "autoload": {
+        "psr-4": {
+            "Dansrocks\\Slimpoc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Cabrera",
+            "email": "drocks2000@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "slim/slim": "4.*"
+    }
+}
