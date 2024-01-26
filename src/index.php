@@ -13,11 +13,11 @@ $app = AppFactory::create();
 $app->get('/', function (Request $request, Response $response, $args) {
     $response->getBody()->write("Hello world!");
     return $response;
-});
+})->setName('bienvenido');
 
 $app->get('/{name}', function (Request $request, Response $response, $args) {
     $response->getBody()->write("Hello ${args['name']}!");
     return $response;
-});
+})->setName('bienvenido-fulanito');
 
 $app->run();
