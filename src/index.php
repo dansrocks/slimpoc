@@ -15,4 +15,9 @@ $app->get('/', function (Request $request, Response $response, $args) {
     return $response;
 });
 
+$app->get('/{name}', function (Request $request, Response $response, $args) {
+    $response->getBody()->write("Hello ${args['name']}!");
+    return $response;
+});
+
 $app->run();
