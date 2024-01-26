@@ -27,9 +27,11 @@ AppFactory::setContainer($containerBuilder->build());
 $app = AppFactory::create();
 
 // enable cache for routing
-$routeCachePath = realpath(__DIR__ . '/../cache/');
-$routeCollector = $app->getRouteCollector();
-$routeCollector->setCacheFile($routeCachePath . '/routes.cache');
+$cachePath = realpath(__DIR__ . '/../cache/');
+if (file_exists($cachePath) && is_dir($cachePath) && is_writable($cachePath)) {
+    $routeCollector = $app->getRouteCollector();
+    $routeCollector->setCacheFile($cachePath . '/routes.cache');
+}
 
 $app->get('/', WelcomeAction::class)->setName('bienvenido');
 $app->get('/{name}', WelcomeAction::class)->setName('bienvenido-fulanito');
