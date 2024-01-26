@@ -14,8 +14,9 @@
             "email": "drocks2000@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "slim/slim": "4.*"
+        "slim/slim": "4.*",
+        "slim/psr7": "dev-master"
     }
 }
