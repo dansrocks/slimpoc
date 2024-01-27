@@ -18,12 +18,10 @@ services:
             - .:/var/www/html
         links:
             - postgres
+        env_file: .env
 
     postgres:
         image: postgres:16-alpine
 #        volumes:
 #            - ~/apps/postgres:/var/lib/postgresql/data
-        environment:
-            - POSTGRES_PASSWORD=my0wnS3cret
-            - POSTGRES_USER=dans
-            - POSTGRES_DB=slimpocdb
+        env_file: .env

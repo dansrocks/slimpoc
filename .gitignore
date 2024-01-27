@@ -1,3 +1,5 @@
+.env
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
@@ -8,7 +10,7 @@
 /app/spool/*
 
 # Cache, session files and logs (Symfony3)
-/var/cache/*
+/cache/*
 /var/logs/*
 /var/sessions/*
 !var/cache/.gitkeep
