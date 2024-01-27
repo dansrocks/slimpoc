@@ -1,11 +1,14 @@
 <?php
 
 use Dansrocks\Slimpoc\Action\WelcomeAction;
+use Dansrocks\Slimpoc\Service\Configuration;
+use DI\Container;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Factory\AppFactory;
 use DI\ContainerBuilder;
 use Psr\Log\LogLevel;
+use Psr\Container\ContainerInterface;
 
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -23,10 +26,16 @@ $containerBuilder->addDefinitions([
             'level' => LogLevel::DEBUG,
         ],
     ],
+    'appName' => 'Slim4Poc - making it simple'
 ]);
 
 AppFactory::setContainer($containerBuilder->build());
 $app = AppFactory::create();
+
+$container = $app->getContainer();
+$container->set('configuration', DI\factory(function (ContainerInterface $c) {
+    return new Configuration($c->get('appName'));
+}));
 
 // enable cache for routing
 $cachePath = realpath(__DIR__ . '/../cache/');
