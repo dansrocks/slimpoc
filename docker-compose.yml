@@ -16,4 +16,14 @@ services:
         image: php:8.1-fpm
         volumes:
             - .:/var/www/html
+        links:
+            - postgres
 
+    postgres:
+        image: postgres:16-alpine
+#        volumes:
+#            - ~/apps/postgres:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=my0wnS3cret
+            - POSTGRES_USER=dans
+            - POSTGRES_DB=slimpocdb
