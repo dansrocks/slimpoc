@@ -2,7 +2,6 @@
 
 use Dansrocks\Slimpoc\Action\WelcomeAction;
 use Dansrocks\Slimpoc\Service\Configuration;
-use DI\Container;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Factory\AppFactory;
@@ -33,9 +32,9 @@ AppFactory::setContainer($containerBuilder->build());
 $app = AppFactory::create();
 
 $container = $app->getContainer();
-$container->set('configuration', DI\factory(function (ContainerInterface $c) {
+$container->set('configuration', function (ContainerInterface $c) {
     return new Configuration($c->get('appName'));
-}));
+});
 
 // enable cache for routing
 $cachePath = realpath(__DIR__ . '/../cache/');
