@@ -16,17 +16,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $containerBuilder = new ContainerBuilder();
 
 // configure PHP-DI here
-$containerBuilder->addDefinitions([
-    'settings' => [
-        'displayErrorDetails' => true, // Should be set to false in production
-        'logger' => [
-            'name' => 'SlimPoC',
-            'path' => 'php://stderr',
-            'level' => LogLevel::DEBUG,
-        ],
-    ],
-    'appName' => 'Slim4Poc - making it simple'
-]);
+$containerBuilder->addDefinitions(require __DIR__ . '/settings.php');
 
 AppFactory::setContainer($containerBuilder->build());
 $app = AppFactory::create();
