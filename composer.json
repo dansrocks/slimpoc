@@ -18,8 +18,8 @@
     "require": {
         "slim/slim": "4.*",
         "slim/psr7": "dev-master",
-        "php-di/php-di": "^7.0",
         "doctrine/orm": "^2.17",
-        "symfony/cache": "^6.4"
+        "symfony/cache": "^6.4",
+        "uma/dic": "^3.0"
     }
 }

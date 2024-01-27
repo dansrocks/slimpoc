@@ -5,19 +5,14 @@ use Dansrocks\Slimpoc\Service\Configuration;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Factory\AppFactory;
-use DI\ContainerBuilder;
 use Psr\Container\ContainerInterface;
-
+use UMA\DIC\Container;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$container = new Container(require __DIR__ . '/settings.php');
 
-$containerBuilder = new ContainerBuilder();
-
-// configure PHP-DI here
-$containerBuilder->addDefinitions(require __DIR__ . '/settings.php');
-
-AppFactory::setContainer($containerBuilder->build());
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 
 $container = $app->getContainer();
